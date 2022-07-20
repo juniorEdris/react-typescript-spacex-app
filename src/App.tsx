@@ -1,7 +1,7 @@
 import { FC } from "react";
-import "./App.css";
+import "antd/dist/antd.less";
 
-const App:FC = () => {
+const App: FC = () => {
   return (
     <div className="App">
       <h1>React typescript spaceX app</h1>
