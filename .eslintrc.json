@@ -61,6 +61,7 @@
         "props": true,
         "ignorePropertyModificationsFor": ["state"]
       }
-    ]
+    ],
+    "import/no-named-as-default": 0
   }
 }

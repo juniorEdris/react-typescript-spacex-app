@@ -63,7 +63,7 @@ interface LaunchFailureDetails {
 }
 
 interface Links {
-  mission_patch: string | null;
+  mission_patch: string;
   mission_patch_small: string | null;
   reddit_campaign: string | null;
   reddit_launch: string | null;
@@ -94,6 +94,21 @@ interface Rocket {
   first_stage: RocketFirstStage;
   second_stage: RocketSecondStage;
   fairings: Fairings;
+}
+
+export interface SpaceDocument {
+  flight_number: number;
+  mission_name: string;
+  upcoming: boolean;
+  launch_year: string;
+  launch_date_unix: number;
+  launch_date_utc: string;
+  launch_date_local: string;
+  is_tentative: boolean;
+  tentative_max_precision: string;
+  tbd: boolean;
+  launch_window: number;
+  rocket: Rocket;
   ships: [];
   telemetry: {
     flight_club: null | "";
@@ -111,32 +126,16 @@ interface Rocket {
   crew: null | string;
 }
 
-export interface SpaceDocument {
-  flight_number: number;
-  mission_name: string;
-  upcoming: boolean;
-  launch_year: string;
-  launch_date_unix: number;
-  launch_date_utc: string;
-  launch_date_local: string;
-  is_tentative: boolean;
-  tentative_max_precision: string;
-  tbd: boolean;
-  launch_window: number;
-  rocket: Rocket;
+// Prepared Data Interface
+export default interface RocketPreparedData {
+  flightNumber: number;
+  missionName: string;
+  launchYear: string;
+  rocket: { rocketId: string; rocketName: string; rocketType: string };
+  launchDate_local: string;
+  launchSuccess: boolean;
+  links: {
+    missionPatch: string;
+  };
+  details: string | null;
 }
-
-export interface StateData {
-  data: SpaceDocument[];
-}
-
-/*
-
-"details": "Engine failure at 33 seconds and loss of vehicle",
-  "static_fire_date_utc": "2006-03-17T00:00:00.000Z",
-  "static_fire_date_unix": 1142553600,
-  "timeline": {
-    "webcast_liftoff": 54
-  },
-  "crew": null
-*/

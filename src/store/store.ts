@@ -2,10 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import SpaceSlice from "../features/spaces/spaceSlice";
 
-// const customizedMiddleware = getDefaultMiddleware({
-//   serializableCheck: false,
-// });
-
 const store = configureStore({
   reducer: {
     spaces: SpaceSlice,
