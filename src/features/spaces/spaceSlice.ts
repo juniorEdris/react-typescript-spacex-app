@@ -30,7 +30,6 @@ export const getSpaces = createAsyncThunk("space", async () => {
   try {
     return await SpaceServices.getSpaces();
   } catch (error) {
-    console.log("Error: ", error);
     return [];
   }
 });

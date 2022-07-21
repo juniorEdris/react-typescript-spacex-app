@@ -11,16 +11,21 @@ type CardType = {
 const Cards = ({ loading, card }: CardType) => {
   return (
     <Card
+      key={card.flightNumber}
       loading={loading}
-      style={{ width: 300 }}
+      style={{ width: 300, height: 450 }}
+      size="small"
       cover={
         <img alt={card?.rocket?.rocketName} src={card?.links?.missionPatch} />
       }
     >
       <Meta
+        key={card.flightNumber}
         avatar={<Avatar src={card?.links?.missionPatch} />}
         title={card?.rocket?.rocketName}
-        description={card?.details}
+        description={
+          card?.details ? `${card?.details?.substring(0, 100)}... see more` : ""
+        }
       />
     </Card>
   );

@@ -133,6 +133,7 @@ export default interface RocketPreparedData {
   launchYear: string;
   rocket: { rocketId: string; rocketName: string; rocketType: string };
   launchDate_local: string;
+  launchDateUnix: string;
   launchSuccess: boolean;
   links: {
     missionPatch: string;

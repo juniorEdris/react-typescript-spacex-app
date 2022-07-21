@@ -12,7 +12,9 @@ const App: FC = () => {
   const { isLoading, spaces } = useAppSelector((state) => state.spaces);
 
   const [limit, setLimit] = useState<number>(10);
+  const [prevLimit, setPrevLimit] = useState<number>(0);
   const [rocketData, setRocketData] = useState<RocketPreparedData[]>([]);
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     dispatch(getSpaces());
@@ -25,12 +27,22 @@ const App: FC = () => {
   }, [spaces]);
 
   useEffect(() => {
-    setRocketData(spaces.slice(0, limit));
-  }, [spaces, limit]);
+    setRocketData(spaces.slice(prevLimit, limit));
+  }, [prevLimit, spaces, limit]);
+
+  useEffect(() => {
+    if (search.length > 0) {
+      setRocketData(
+        spaces.filter((space) => space?.rocket?.rocketName === search),
+      );
+    } else {
+      setRocketData(spaces.slice(0, limit));
+    }
+  }, [spaces, search, limit]);
 
   return (
     <div className="App">
-      <Container>
+      <Container setSearch={setSearch}>
         <Space
           direction="horizontal"
           size={30}
@@ -38,6 +50,7 @@ const App: FC = () => {
             display: "flex",
             justifyContent: "center",
             flexDirection: "column",
+            marginTop: 20,
           }}
         >
           <Space
@@ -47,16 +60,21 @@ const App: FC = () => {
             wrap
           >
             {rocketData?.map((card: RocketPreparedData) => (
-              <Cards loading={isLoading} card={card} />
+              <Cards loading={isLoading} card={card} key={card?.flightNumber} />
             ))}
           </Space>
-          <Pagination
-            defaultCurrent={1}
-            total={spaces.length}
-            onChange={(page, pageSize): void => {
-              setLimit(page * pageSize);
-            }}
-          />
+          {search.length === 0 && (
+            <Pagination
+              defaultCurrent={1}
+              total={spaces.length}
+              onChange={(page, pageSize): void => {
+                console.log({ page, pageSize, prev: page * pageSize - 10 });
+
+                setPrevLimit(page * pageSize - 10);
+                setLimit(page * pageSize);
+              }}
+            />
+          )}
         </Space>
       </Container>
     </div>

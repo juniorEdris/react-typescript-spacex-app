@@ -1,18 +1,34 @@
-import { Layout } from "antd";
-import React from "react";
+import { Layout, Input } from "antd";
+import React, { Dispatch, SetStateAction } from "react";
 
 const { Header, Content, Footer } = Layout;
+const { Search } = Input;
 
 type ContainerProps = {
   children: React.ReactChild;
+  setSearch: Dispatch<SetStateAction<string>>;
 };
 
-const Container = ({ children }: ContainerProps) => {
+const Container = ({ children, setSearch }: ContainerProps) => {
   return (
     <Layout>
-      <Header>Header</Header>
+      <Header>
+        <Search
+          style={{
+            width: 400,
+            margin: "18px auto",
+          }}
+          placeholder="input search text"
+          allowClear
+          enterButton="Search"
+          size="middle"
+          onSearch={(data) => {
+            setSearch(data);
+          }}
+        />
+      </Header>
       <Content>{children}</Content>
-      <Footer>Footer</Footer>
+      <Footer />
     </Layout>
   );
 };
