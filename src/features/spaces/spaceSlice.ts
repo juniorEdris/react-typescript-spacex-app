@@ -42,21 +42,18 @@ export const SpaceSlice = createSlice({
       // GET SPACES
       .addCase(getSpaces.pending, (state) => {
         state.isLoading = true;
-        console.log({ pending: state });
       })
       .addCase(getSpaces.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        // state.spaces = action.payload?.data || [];
-        // console.log({ fulfil: state, action: action.payload });
+        state.spaces = action.payload || [];
       })
       .addCase(getSpaces.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
         state.spaces = [];
-        console.log({ reject: state });
       });
   },
 });
 
-export default SpaceSlice;
+export default SpaceSlice.reducer;

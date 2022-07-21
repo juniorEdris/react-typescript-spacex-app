@@ -9,7 +9,9 @@ const { ColumnGroup, Column } = Table;
 
 const App: FC = () => {
   const dispatch = useAppDispatch();
-  // const { isLoading, movies } = useAppSelector(state=> state.spaces)
+  const { isLoading, spaces } = useAppSelector((state) => state.spaces);
+  console.log({ spaces });
+
   useEffect(() => {
     dispatch(getSpaces());
   }, [dispatch]);

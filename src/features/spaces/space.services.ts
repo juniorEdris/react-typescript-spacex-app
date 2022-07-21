@@ -6,7 +6,7 @@ const url: string = "https://api.spacexdata.com/v3/launches";
 const getSpaces = async () => {
   const response = await axios.get<SpaceDocument[]>(url);
 
-  return response;
+  return response?.data;
 };
 
 const SpaceServices = {
