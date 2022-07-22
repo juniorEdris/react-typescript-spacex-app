@@ -4,6 +4,10 @@
 # React.js App
 
     > Includes React Typescript
+    
+    > Ant Design
+    
+    > Redux/Redux Toolkit
 
 # Start the APP
 
@@ -12,6 +16,8 @@
     > # Dont need any .env file all usefull links are in app
 
     > run npm/yarn install for install all the necessary dipendencies
+    
+    > run npm/yarn start to start the development server.
 
     > Wallaah! APP is ready to test.
  
