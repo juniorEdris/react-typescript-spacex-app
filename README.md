@@ -30,3 +30,5 @@
     > Select a repository and deploy the App.
     
     > Ready to explore
+    
+    > Link to the site - https://62da37115b245248350a5e64--lambent-cajeta-1a8790.netlify.app/
