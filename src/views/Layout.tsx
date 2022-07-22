@@ -12,16 +12,23 @@ type ContainerProps = {
 const Container = ({ children, setSearch }: ContainerProps) => {
   return (
     <Layout>
-      <Header>
+      <Header
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: 20,
+          paddingBottom: 20,
+        }}
+      >
         <Search
           style={{
             width: 400,
-            margin: "18px auto",
           }}
-          placeholder="input search text"
+          placeholder="Search by mission name..."
           allowClear
           enterButton="Search"
-          size="middle"
+          size="large"
           onSearch={(data) => {
             setSearch(data);
           }}

@@ -1,5 +1,6 @@
-import { Avatar, Card } from "antd";
+import { Avatar, Card, Image } from "antd";
 import RocketPreparedData from "features/spaces/space.interfaces";
+import placeHolderImage from "views/variables";
 
 const { Meta } = Card;
 
@@ -13,18 +14,29 @@ const Cards = ({ loading, card }: CardType) => {
     <Card
       key={card.flightNumber}
       loading={loading}
-      style={{ width: 300, height: 450 }}
+      style={{ width: 300, height: 500 }}
       size="small"
       cover={
-        <img alt={card?.rocket?.rocketName} src={card?.links?.missionPatch} />
+        <Image
+          preview={{ visible: false }}
+          src={card?.links?.missionPatch}
+          fallback={placeHolderImage}
+        />
       }
     >
       <Meta
         key={card.flightNumber}
         avatar={<Avatar src={card?.links?.missionPatch} />}
-        title={card?.rocket?.rocketName}
+        title={card?.missionName} // rocket?.rocketName
         description={
-          card?.details ? `${card?.details?.substring(0, 100)}... see more` : ""
+          <>
+            <p>Rocket name: {card?.rocket?.rocketName}</p>
+            <p>
+              {card?.details
+                ? `${card?.details?.substring(0, 100)}... see more`
+                : ""}
+            </p>
+          </>
         }
       />
     </Card>
