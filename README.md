@@ -15,4 +15,10 @@
 
     > Wallaah! APP is ready to test.
  
-# Deploy the APP On Heroku
+# Deploy the APP On Netlify
+
+    > Signin to Netlify.
+
+    > Connect github profile to netlify.
+
+    > Select a repository and deploy the App.

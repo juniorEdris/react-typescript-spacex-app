@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import "antd/dist/antd.css";
 import Container from "views/Layout";
 import Cards from "views/component/Cards";
-import { Pagination, Space } from "antd";
+import { PageHeader, Pagination, Space } from "antd";
 import RocketPreparedData from "features/spaces/space.interfaces";
 import SpinLoader from "views/component/SpinLoader";
 import { useAppDispatch, useAppSelector } from "./store/store";
@@ -60,6 +60,10 @@ const App: FC = () => {
               marginTop: 20,
             }}
           >
+            <PageHeader
+              style={{ marginTop: 10 }}
+              title={<h1>SpaceX Rockets</h1>}
+            />
             <Space
               direction="horizontal"
               size="middle"
