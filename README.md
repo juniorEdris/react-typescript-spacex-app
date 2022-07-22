@@ -22,3 +22,5 @@
     > Connect github profile to netlify.
 
     > Select a repository and deploy the App.
+    
+    > Ready to explore
